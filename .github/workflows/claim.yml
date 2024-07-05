@@ -27,8 +27,8 @@ jobs:
     - name: Get code
       uses: actions/checkout@master
       with:
-        repository: ${{secrets.WKWK_NAME}}
-        token: ${{secrets.WKWK_MASTER}}
+        repository: ${{secrets.WKWK_USER}}/${{secrets.WKWK_REPO}}
+        token: ${{secrets.WKWK_TOKEN}}
     - name: Set up Python 3.12
       uses: actions/setup-python@v5
       with:
@@ -52,7 +52,7 @@ jobs:
         seleniumbase install chromedriver
     - name: Run Script
       run: |
-        cd wkwk
+        cd {secrets.WKWK_REPO}
         python run.py ${{ matrix.rangeIndex }}
     - name: done
       run: exit
